@@ -86,7 +86,7 @@ const authSlice = createSlice({
     logout: (state) => {
       state.user = null;
       state.token = null;
-      state.userType = null; // Clear userType on logout
+      state.userType = null;
       window.localStorage.clear();
     },
   },

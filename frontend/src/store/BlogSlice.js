@@ -14,6 +14,7 @@ export const createBlog = createAsyncThunk('blogs/createBlog', async (blogData, 
 export const fetchBlogs = createAsyncThunk('blogs/fetchBlogs', async (_, { rejectWithValue }) => {
   try {
     const { data } = await axios.get('http://localhost:5000/blogs');
+    console.log("bloglist in redux", data)
     return data;
   } catch (error) {
     return rejectWithValue(error.response.data);

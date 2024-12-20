@@ -17,6 +17,10 @@ const AdminDashboard = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
+            <Nav.Link href="/list">View Blogs</Nav.Link>
+            <Nav.Link href="/create">Create New</Nav.Link>
+
+
               <Button variant="outline-light" href="/" className="ms-3">
                 Logout
               </Button>

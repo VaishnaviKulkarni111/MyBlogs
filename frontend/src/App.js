@@ -1,4 +1,5 @@
 import AdminDashboard from './admin/AdminDashboard';
+import BlogsList from './admin/BlogList';
 import CreateBlog from './admin/CreateBlog';
 import './App.css';
 import Authpage from './auth/Authpage';
@@ -15,6 +16,7 @@ function App() {
     <Route path="/auth" element={<Authpage />} />
     <Route path="/admin" element={<AdminDashboard />} />
     <Route path="/create" element={<CreateBlog />} />
+    <Route path="/list" element={<BlogsList />} />
 
 
 
