@@ -58,7 +58,7 @@ const AdminDashboard = () => {
         {/* Create Blog Section */}
         <Row className="mb-4">
           <Col className="text-center">
-            <Button variant="primary" size="lg" href="/create-blog">
+            <Button variant="primary" size="lg" href="/create">
               Create New Blog
             </Button>
           </Col>
