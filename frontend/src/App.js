@@ -1,24 +1,25 @@
-import logo from './logo.svg';
+import AdminDashboard from './admin/AdminDashboard';
 import './App.css';
+import Authpage from './auth/Authpage';
+import Homepage from './UI/Homepage';
+import {  Routes, Route } from "react-router-dom";
 
 function App() {
+  const isLoggedIn = window.localStorage.getItem("loggedIn");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+   <Routes>
+    <Route path="/" element={<Homepage />} />
+    <Route path="/auth" element={<Authpage />} />
+    <Route path="/admin" element={<AdminDashboard />} />
+
+
+
+    </Routes> 
+
+     
+    </>
   );
 }
 
