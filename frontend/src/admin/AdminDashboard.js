@@ -4,8 +4,7 @@ import { Container, Row, Col, Card, Button, Navbar, Nav, ListGroup } from "react
 const AdminDashboard = () => {
   return (
     <>
-      {/* Fixed Navigation Bar */}
-      <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
+      <Navbar style={{ backgroundColor: "#712cf9" }} variant="dark" expand="lg" fixed="top">
         <Container>
           <Navbar.Brand href="/">Admin Dashboard</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -77,12 +76,7 @@ const AdminDashboard = () => {
           </Col>
         </Row>
 
-        {/* Blog List Placeholder */}
-        <Row>
-          <Col>
-            {/* Add Blog List or Other Content Here */}
-          </Col>
-        </Row>
+        
       </Container>
     </>
   );

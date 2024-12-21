@@ -8,16 +8,16 @@ const BlogsList = () => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [currentBlog, setCurrentBlog] = useState(null);
   const [formData, setFormData] = useState({ title: "", content: "", tags: "" });
-  const [expandedBlogId, setExpandedBlogId] = useState(null); // Track which blog is expanded
+  const [expandedBlogId, setExpandedBlogId] = useState(null); 
 
   const dispatch = useDispatch();
 
-  // Fetch blogs from the backend
+  // Fetching blogs from the backend
   useEffect(() => {
     dispatch(fetchBlogs());
   }, [dispatch]);
 
-  // Get blogs from Redux store
+  // Get blogs from  store
   const blogsData = useSelector((state) => state.blog.blogs?.data || []);
   console.log("BlogsData on page:", blogsData);
 

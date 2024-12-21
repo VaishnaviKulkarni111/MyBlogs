@@ -13,12 +13,10 @@ const Userboard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // Fetch blogs on mount
   useEffect(() => {
     dispatch(fetchBlogs());
   }, [dispatch]);
 
-  // Get blogs from Redux store
   const blogsData = useSelector((state) => state.blog.blogs?.data || []);
 
   const handleExpand = (id) => {
@@ -27,23 +25,20 @@ const Userboard = () => {
 
   const handleLike = (id) => {
     console.log(`Liked blog ${id}`);
-    // Implement like functionality here
   };
 
   const handleComment = (id) => {
     console.log(`Commenting on blog ${id}`);
-    // Implement comment functionality here
   };
 
   const handleSave = (id) => {
     console.log(`Saved blog ${id}`);
-    // Implement save functionality here
   };
 
   return (
     <>
       {/* Navigation Bar */}
-      <Navbar bg="dark" variant="dark" expand="lg" className="mb-4">
+      <Navbar style={{ backgroundColor: "#712cf9" }} variant="dark" expand="lg" className="mb-4">
         <Navbar.Brand>MyBlogs</Navbar.Brand>
         <Nav className="ml-auto">
           <Nav.Link active>Blogs</Nav.Link>
@@ -57,7 +52,7 @@ const Userboard = () => {
       <Container>
       <Row className="align-items-center mb-4">
           <Col xs={6}>
-            <h2>Explore Blogs</h2>
+            <h2 style={{ color: "#712cf9" }} >Explore Blogs</h2>
           </Col>
           <Col xs={6} className="text-right">
             <InputGroup>

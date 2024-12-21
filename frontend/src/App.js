@@ -10,6 +10,8 @@ import UserBoard from "./user/UserBoard";
 function App() {
   const isLoggedIn = window.localStorage.getItem("loggedIn");
   const userType = window.localStorage.getItem("userType");
+
+  console.log(isLoggedIn)
   return (
     <>
       <Routes>
@@ -26,7 +28,7 @@ function App() {
           <Route path="/list" element={<BlogsList />} />
         )}
 
-        
+
         <Route path="/user" element={<UserBoard />} />
       </Routes>
     </>

@@ -3,7 +3,7 @@ import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useDispatch, useSelector } from "react-redux";
-import { createBlog } from "../store/BlogSlice"; // Ensure this path is correct
+import { createBlog } from "../store/BlogSlice"; 
 
 const CreateBlog = () => {
   const [title, setTitle] = useState("");
@@ -11,8 +11,7 @@ const CreateBlog = () => {
   const [tags, setTags] = useState("");
 
   const dispatch = useDispatch();
-  const { status, loading, error } = useSelector((state) => state.blog); // Redux state for status, loading, and error
-
+  const { status, loading, error } = useSelector((state) => state.blog); 
   const handleSubmit = (e) => {
     e.preventDefault();
     const blogData = {
@@ -20,14 +19,14 @@ const CreateBlog = () => {
       content,
       tags: tags.split(",").map((tag) => tag.trim()),
     };
-    dispatch(createBlog(blogData)); // Dispatch the action to create the blog
+    dispatch(createBlog(blogData));
     console.log("Blog Data Submitted:", blogData);
   };
 
   return (
     <Container className="my-5">
       <Row className="justify-content-center">
-        <Col md={10}>
+        <Col md={8}>
           <Card className="shadow">
             <Card.Header className="bg-primary text-white text-center">
               <h3>Create New Blog</h3>

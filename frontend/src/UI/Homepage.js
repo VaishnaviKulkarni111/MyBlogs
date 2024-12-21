@@ -3,7 +3,7 @@ import { Container, Row, Col, Button, Navbar, Nav } from "react-bootstrap";
 
 const Homepage = () => {
   const heroStyles = {
-    backgroundImage: "url('https://source.unsplash.com/1600x900/?blogging,writing')",
+    backgroundImage: "url('https://static.vecteezy.com/system/resources/previews/039/363/857/non_2x/ai-generated-floral-purple-flower-background-ai-generated-photo.jpg')",
     backgroundSize: "cover",
     backgroundPosition: "center",
     height: "70vh",
@@ -13,6 +13,7 @@ const Homepage = () => {
     color: "#fff",
     textShadow: "2px 2px 10px rgba(0, 0, 0, 0.8)",
     position: "relative",
+    marginTop: "56px", 
   };
 
   const overlayStyles = {
@@ -21,18 +22,21 @@ const Homepage = () => {
     left: 0,
     width: "100%",
     height: "100%",
-    backgroundColor: "rgba(0, 0, 0, 0.6)",
+    backgroundColor: "rgba(113, 44, 249, 0.2)",
+    zIndex: 1,
   };
 
   const titleStyles = {
     fontWeight: "bold",
     fontSize: "3rem",
     marginBottom: "0.5rem",
+    zIndex: 2,
   };
 
   const subtitleStyles = {
     fontSize: "1.25rem",
     marginBottom: "1.5rem",
+    zIndex: 2,
   };
 
   const highlightCardStyles = {
@@ -44,17 +48,20 @@ const Homepage = () => {
 
   return (
     <>
-      {/* Navigation Bar */}
-      <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
+      <Navbar style={{ backgroundColor: "#712cf9" }} variant="dark" expand="lg" fixed="top">
         <Container>
           <Navbar.Brand href="/">MyBlogs</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-              <Nav.Link href="/blogs">Blogs</Nav.Link>
-              <Nav.Link href="/about">About</Nav.Link>
-              <Nav.Link href="/contact">Contact</Nav.Link>
-              <Button variant="outline-light" href="/auth" className="ms-3">
+              <Nav.Link href="/blogs" style={{ color: "#fff" }}>Blogs</Nav.Link>
+              <Nav.Link href="/about" style={{ color: "#fff" }}>About</Nav.Link>
+              <Nav.Link href="/contact" style={{ color: "#fff" }}>Contact</Nav.Link>
+              <Button
+                style={{ backgroundColor: "#fff", color: "#712cf9", border: "none" }}
+                href="/auth"
+                className="ms-3"
+              >
                 Login
               </Button>
             </Nav>
@@ -70,7 +77,17 @@ const Homepage = () => {
           <p style={subtitleStyles}>
             Share your thoughts, explore diverse perspectives, and connect with the world.
           </p>
-          <Button variant="primary" size="lg" href="/auth" className="mt-3">
+          <Button
+            style={{
+              backgroundColor: "white",
+              color: "#712cf9" ,
+              borderColor: "#712cf9",
+              fontSize: "1.2rem",
+            }}
+            size="lg"
+            href="/auth"
+            className="mt-3"
+          >
             Get Started
           </Button>
         </Container>
@@ -81,19 +98,19 @@ const Homepage = () => {
         <Row className="g-4 text-center">
           <Col md={4}>
             <div style={highlightCardStyles}>
-              <h4>Create Blogs</h4>
+              <h4 style={{ color: "#712cf9" }}>Create Blogs</h4>
               <p>Easily share your ideas and stories with the world.</p>
             </div>
           </Col>
           <Col md={4}>
             <div style={highlightCardStyles}>
-              <h4>Explore Content</h4>
+              <h4 style={{ color: "#712cf9" }}>Explore Content</h4>
               <p>Read blogs on various topics and discover new perspectives.</p>
             </div>
           </Col>
           <Col md={4}>
             <div style={highlightCardStyles}>
-              <h4>Manage with Ease</h4>
+              <h4 style={{ color: "#712cf9" }}>Manage with Ease</h4>
               <p>Admins can manage posts and ensure content quality.</p>
             </div>
           </Col>
@@ -101,17 +118,17 @@ const Homepage = () => {
       </Container>
 
       {/* Footer */}
-      <footer className="bg-dark text-light py-4">
+      <footer className="py-4" style={{ backgroundColor: "#712cf9", color: "#fff" }}>
         <Container>
           <Row>
             <Col md={6}>
               <p>&copy; 2024 MyBlogs. All rights reserved.</p>
             </Col>
             <Col md={6} className="text-end">
-              <a href="/privacy" className="text-light me-3">
+              <a href="/privacy" style={{ color: "#fff" }} className="me-3">
                 Privacy Policy
               </a>
-              <a href="/terms" className="text-light">
+              <a href="/terms" style={{ color: "#fff" }}>
                 Terms of Service
               </a>
             </Col>
