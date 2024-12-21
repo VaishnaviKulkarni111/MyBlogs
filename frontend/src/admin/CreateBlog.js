@@ -3,7 +3,7 @@ import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useDispatch, useSelector } from "react-redux";
-import { createBlog } from "../store/BlogSlice"; // Assuming the slice is named blogSlice
+import { createBlog } from "../store/BlogSlice"; // Ensure this path is correct
 
 const CreateBlog = () => {
   const [title, setTitle] = useState("");
@@ -11,7 +11,7 @@ const CreateBlog = () => {
   const [tags, setTags] = useState("");
 
   const dispatch = useDispatch();
-  const { status } = useSelector((state) => state.blog); // Example to display status
+  const { status, loading, error } = useSelector((state) => state.blog); // Redux state for status, loading, and error
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,7 +20,7 @@ const CreateBlog = () => {
       content,
       tags: tags.split(",").map((tag) => tag.trim()),
     };
-    dispatch(createBlog(blogData)); // Dispatching Redux action
+    dispatch(createBlog(blogData)); // Dispatch the action to create the blog
     console.log("Blog Data Submitted:", blogData);
   };
 
@@ -58,25 +58,34 @@ const CreateBlog = () => {
                 </Form.Group>
 
                 {/* Content Editor */}
-                <Form.Group className="mb-3">
+                <Form.Group className="mb-4">
                   <Form.Label>Content</Form.Label>
                   <ReactQuill
                     theme="snow"
                     value={content}
                     onChange={setContent}
                     placeholder="Write your blog content here..."
-                    style={{ height: "150px" }} // Increased height
+                    style={{ height: "200px", marginBottom: "10px" }} // Adjusted margin-bottom
                   />
                 </Form.Group>
 
                 {/* Submit Button */}
-                <div className="text-center mt-1">
-                  <Button variant="primary" type="submit" size="lg" href="admin">
-                    Publish Blog
+                <div className="text-center mt-5">
+                  <Button
+                    variant="primary"
+                    type="submit"
+                    href="/admin"
+                    size="lg"
+                    style={{ width: "200px", marginTop: "20px" }} // Added margin-top for spacing
+                    disabled={loading}
+                  >
+                    {loading ? "Publishing..." : "Publish Blog"}
                   </Button>
                 </div>
-                {/* Status message */}
+
+                {/* Status or Error message */}
                 {status && <p className="text-center mt-3">{status}</p>}
+                {error && <p className="text-center mt-3 text-danger">{error}</p>}
               </Form>
             </Card.Body>
           </Card>

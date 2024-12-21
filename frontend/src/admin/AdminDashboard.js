@@ -1,26 +1,18 @@
-import React from 'react';
-import { Container, Row, Col, Card, Button, Table, Navbar, Nav } from 'react-bootstrap';
+import React from "react";
+import { Container, Row, Col, Card, Button, Navbar, Nav, ListGroup } from "react-bootstrap";
 
 const AdminDashboard = () => {
-  const blogs = [
-    { id: 1, title: "Blog Post 1", date: "2024-12-15", status: "Published" },
-    { id: 2, title: "Blog Post 2", date: "2024-12-10", status: "Draft" },
-    { id: 3, title: "Blog Post 3", date: "2024-12-05", status: "Published" },
-  ];
-
   return (
     <>
-      {/* Navigation Bar */}
-      <Navbar bg="dark" variant="dark" expand="lg">
+      {/* Fixed Navigation Bar */}
+      <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
         <Container>
           <Navbar.Brand href="/">Admin Dashboard</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-            <Nav.Link href="/list">View Blogs</Nav.Link>
-            <Nav.Link href="/create">Create New</Nav.Link>
-
-
+              <Nav.Link href="/list">View Blogs</Nav.Link>
+              <Nav.Link href="/create">Create New</Nav.Link>
               <Button variant="outline-light" href="/" className="ms-3">
                 Logout
               </Button>
@@ -30,7 +22,7 @@ const AdminDashboard = () => {
       </Navbar>
 
       {/* Dashboard Content */}
-      <Container className="my-5">
+      <Container style={{ paddingTop: "100px" }}>
         {/* Dashboard Overview */}
         <Row className="mb-4">
           <Col md={4}>
@@ -52,7 +44,7 @@ const AdminDashboard = () => {
           <Col md={4}>
             <Card className="text-center shadow-sm">
               <Card.Body>
-                <Card.Title>Draft Blogs</Card.Title>
+                <Card.Title>Liked By Users</Card.Title>
                 <Card.Text className="display-4">4</Card.Text>
               </Card.Body>
             </Card>
@@ -68,39 +60,27 @@ const AdminDashboard = () => {
           </Col>
         </Row>
 
-        {/* Blog List */}
+        {/* Notifications Section */}
+        <Row className="mb-4">
+          <Col md={9} className="mx-auto">
+          <h2>Recent Notifications</h2>
+
+            <Card className="shadow-sm">
+              <ListGroup variant="flush">
+                <ListGroup.Item>User1 liked your blog.</ListGroup.Item>
+                <ListGroup.Item>User2 commented on "Blog Title".</ListGroup.Item>
+                <ListGroup.Item>User3 saved your blog.</ListGroup.Item>
+                <ListGroup.Item>User4 liked your blog.</ListGroup.Item>
+                <ListGroup.Item>User5 shared your blog.</ListGroup.Item>
+              </ListGroup>
+            </Card>
+          </Col>
+        </Row>
+
+        {/* Blog List Placeholder */}
         <Row>
           <Col>
-            <h3>Your Blogs</h3>
-            <Table striped bordered hover responsive className="shadow-sm">
-              <thead className="table-dark">
-                <tr>
-                  <th>#</th>
-                  <th>Title</th>
-                  <th>Date</th>
-                  <th>Status</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {blogs.map((blog) => (
-                  <tr key={blog.id}>
-                    <td>{blog.id}</td>
-                    <td>{blog.title}</td>
-                    <td>{blog.date}</td>
-                    <td>{blog.status}</td>
-                    <td>
-                      <Button variant="success" size="sm" href={`/edit-blog/${blog.id}`}>
-                        Edit
-                      </Button>{' '}
-                      <Button variant="danger" size="sm">
-                        Delete
-                      </Button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
+            {/* Add Blog List or Other Content Here */}
           </Col>
         </Row>
       </Container>

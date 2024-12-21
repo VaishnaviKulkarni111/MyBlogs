@@ -1,32 +1,51 @@
-import React from 'react';
-import { Container, Row, Col, Button, Navbar, Nav } from 'react-bootstrap';
+import React from "react";
+import { Container, Row, Col, Button, Navbar, Nav } from "react-bootstrap";
 
 const Homepage = () => {
   const heroStyles = {
     backgroundImage: "url('https://source.unsplash.com/1600x900/?blogging,writing')",
     backgroundSize: "cover",
     backgroundPosition: "center",
-    height: "60vh",
+    height: "70vh",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    color: "black",
-    textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)",
+    color: "#fff",
+    textShadow: "2px 2px 10px rgba(0, 0, 0, 0.8)",
+    position: "relative",
+  };
+
+  const overlayStyles = {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgba(0, 0, 0, 0.6)",
   };
 
   const titleStyles = {
     fontWeight: "bold",
     fontSize: "3rem",
+    marginBottom: "0.5rem",
   };
 
   const subtitleStyles = {
     fontSize: "1.25rem",
+    marginBottom: "1.5rem",
+  };
+
+  const highlightCardStyles = {
+    background: "#f8f9fa",
+    borderRadius: "8px",
+    padding: "20px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
   };
 
   return (
     <>
       {/* Navigation Bar */}
-      <Navbar bg="dark" variant="dark" expand="lg">
+      <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
         <Container>
           <Navbar.Brand href="/">MyBlogs</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -45,7 +64,8 @@ const Homepage = () => {
 
       {/* Hero Section */}
       <div style={heroStyles}>
-        <Container className="text-center">
+        <div style={overlayStyles}></div>
+        <Container className="text-center position-relative">
           <h1 style={titleStyles}>Welcome to MyBlogs</h1>
           <p style={subtitleStyles}>
             Share your thoughts, explore diverse perspectives, and connect with the world.
@@ -58,18 +78,24 @@ const Homepage = () => {
 
       {/* Highlights Section */}
       <Container className="my-5">
-        <Row className="text-center">
+        <Row className="g-4 text-center">
           <Col md={4}>
-            <h3>Create Blogs</h3>
-            <p>Easily share your ideas and stories with the world.</p>
+            <div style={highlightCardStyles}>
+              <h4>Create Blogs</h4>
+              <p>Easily share your ideas and stories with the world.</p>
+            </div>
           </Col>
           <Col md={4}>
-            <h3>Explore Content</h3>
-            <p>Read blogs on various topics and discover new perspectives.</p>
+            <div style={highlightCardStyles}>
+              <h4>Explore Content</h4>
+              <p>Read blogs on various topics and discover new perspectives.</p>
+            </div>
           </Col>
           <Col md={4}>
-            <h3>Manage with Ease</h3>
-            <p>Admins can manage posts and ensure content quality.</p>
+            <div style={highlightCardStyles}>
+              <h4>Manage with Ease</h4>
+              <p>Admins can manage posts and ensure content quality.</p>
+            </div>
           </Col>
         </Row>
       </Container>

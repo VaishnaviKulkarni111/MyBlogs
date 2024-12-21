@@ -12,12 +12,15 @@ router.put("/blogs/:id", async (req, res) => {
   }
 
   try {
+    const formattedTags =
+      Array.isArray(tags) ? tags : tags.split(",").map((tag) => tag.trim());
+
     const updatedBlog = await Blog.findByIdAndUpdate(
       id,
       {
         title,
         content,
-        tags: tags ? tags.split(",").map((tag) => tag.trim()) : [],
+        tags: formattedTags,
       },
       { new: true }
     );
@@ -32,6 +35,7 @@ router.put("/blogs/:id", async (req, res) => {
     res.status(500).json({ status: "error", error: error.message });
   }
 });
+
 
 // Route to delete a blog (Admin only)
 router.delete("/blogs/:id", async (req, res) => {

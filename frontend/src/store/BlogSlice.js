@@ -21,6 +21,17 @@ export const fetchBlogs = createAsyncThunk('blogs/fetchBlogs', async (_, { rejec
   }
 });
 
+export const editBlog = createAsyncThunk("blog/editBlog", async ({ id, blogData }) => {
+    const response = await axios.put(`http://localhost:5000/blogs/${id}`, blogData);
+    return response.data.data;
+  });
+  
+  // Delete Blog
+  export const deleteBlog = createAsyncThunk("blog/deleteBlog", async (id) => {
+    await axios.delete(`http://localhost:5000/blogs/${id}`);
+    return id;
+  });
+
 // Slice
 const blogSlice = createSlice({
   name: 'blogs',
@@ -56,7 +67,17 @@ const blogSlice = createSlice({
       .addCase(createBlog.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+      .addCase(editBlog.fulfilled, (state, action) => {
+        const index = state.blogs.data.findIndex((blog) => blog._id === action.payload._id);
+        if (index !== -1) {
+          state.blogs.data[index] = action.payload;
+        }
+      })
+      .addCase(deleteBlog.fulfilled, (state, action) => {
+        state.blogs.data = state.blogs.data.filter((blog) => blog._id !== action.payload);
       });
+
   },
 });
 

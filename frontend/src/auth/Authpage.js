@@ -21,7 +21,7 @@ function Authpage() {
       if (userType === 'admin') {
         navigate('/admin');
       } else if (userType === 'user') {
-        navigate('/user-board');
+        navigate('/user');
       }
     }
   }, [token, userType, navigate]);
